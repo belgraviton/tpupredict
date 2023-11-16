@@ -150,12 +150,14 @@ def train(args: train_args.TrainArgs):
       best_val_opa = val_opa
       best_val_at_epoch = i
       best_params = {v.ref: v + 0 for v in model.trainable_variables}
-      logging.info(' * [@%i] Validation (NEW BEST): %s', i, str(val_opa))
+      # logging.info(' * [@%i] Validation (NEW BEST): %s', i, str(val_opa))
+      print(f' * [@{i}] Validation (NEW BEST): {val_opa:.1%}')
       # Write model and train metrics (in `run_info`).
       save_model(model, run_info, out_dir, args)
     elif args.early_stop > 0 and i - best_val_at_epoch >= args.early_stop:
-      logging.info('[@%i] Best accuracy was attained at epoch %i. Stopping.',
-                   i, best_val_at_epoch)
+      # logging.info('[@%i] Best accuracy was attained at epoch %i. Stopping.',
+      #              i, best_val_at_epoch)
+      print(f'[@{i}] Best accuracy was attained at epoch {best_val_at_epoch}. Stopping.')
       break
 
   # Restore best parameters.
@@ -207,4 +209,3 @@ def train(args: train_args.TrainArgs):
     for graph_id, ranks in test_rankings:
       fout.write(f'layout:{args.source}:{args.search}:{graph_id},{ranks}\n')
   print('\n\n   ***  Wrote', args.results_csv, '\n\n')
-
