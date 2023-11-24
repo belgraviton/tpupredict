@@ -1,4 +1,10 @@
-# TpuPredict
+# TpuPredict 
+
+This repository is a copy of [tpu_graphs](https://github.com/google-research-datasets/tpu_graphs). This one was used to make experiments in order to take part in [Google - Fast or Slow? Predict AI Model Runtime](https://www.kaggle.com/competitions/predict-ai-model-runtime/overview) Kaggle competition. 53rd place was achieved at the competition.
+
+RSME implementation was taken from [Kaggle forum](https://www.kaggle.com/competitions/predict-ai-model-runtime/discussion/455672).
+
+# Original repository
 
 TpuGraphs is a performance prediction dataset on full tensor programs, represented as computational graphs, running on Tensor Processing Units (TPUs). Each graph in the dataset represents the main computation of a machine learning workload, e.g., a training epoch or an inference step. Each data sample contains a computational graph, a compilation configuration, and the execution time of the graph when compiled with the configuration. The graphs in the dataset are collected from open-source machine learning programs, featuring popular model architectures (e.g., ResNet, EfficientNet, Mask R-CNN, and Transformer).
 
