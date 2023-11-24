@@ -67,10 +67,15 @@ def top_error_performance(
 
   return result
 
+def root_mean_squared_error(y_true, y_pred):
+    return tf.sqrt(tf.reduce_mean(tf.square(y_pred - y_true)))
+
+
 LOSS_DICT = {
     'ListMLELoss': tfr.keras.losses.ListMLELoss(temperature=10),
     'PairwiseHingeLoss': tfr.keras.losses.PairwiseHingeLoss(temperature=10),
     'MSE': tf.keras.losses.MeanSquaredError(),
+    'RMSE': root_mean_squared_error
 }
 
 
@@ -113,4 +118,3 @@ class CombinedLoss(tf.keras.losses.Loss):
   def call(self, y_true, y_pred):
     return tf.math.add_n([weight * loss(y_true, y_pred)
                           for weight, loss in self._weighted_losses])
-
